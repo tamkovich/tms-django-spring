@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <title>Homework 19_02</title>
+</head>
+
+<style>
+    body{
+        font-family: Raleway;
+        margin-left: 30px;
+    }
+
+    .form1{
+    }
+
+   .form1__input{
+      margin-bottom: 20px;
+   }
+
+    .form1__button{
+      font-family: Raleway;
+      height: 30px;
+      background-color: beige;
+      border: 1px black solid;
+      border-radius:5px;
+    }
+
+    .form1__button:hover{
+      background-color: white;
+      transform: scale(1.05, 1.05);
+      transition: 0.4s;
+    }
+
+    .result__message{
+        margin-top: 40px;
+    }
+
+
+</style>
+
+<body>
+   <h1>Select date: </h1>
+    <form action="" method="post" class="form1">
+        {% csrf_token %}
+        <div class="form1__input">
+          <input type="date" name="form1__date" id="form1_date">
+        </div>
+      <button class="form1__button">Submit</button>
+
+    </form>
+
+    <p class="result__message">
+      {{ result_message }}
+    </p>
+
+</body>
+</html>
