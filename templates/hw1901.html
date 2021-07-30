@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <title>Homework 19_01</title>
+</head>
+
+<style>
+    body{
+        font-family: Raleway;
+        margin-left: 30px;
+    }
+
+    .form1{
+    }
+
+   .form1__input{
+      margin-bottom: 20px;
+   }
+
+    .form1__button{
+      font-family: Raleway;
+      height: 40px;
+      background-color: beige;
+      border: 1px black solid;
+      border-radius:5px;
+    }
+
+    .form1__button:hover{
+      background-color: white;
+      transform: scale(1.05, 1.05);
+      transition: 0.4s;
+    }
+
+    .result__message{
+        margin-top: 40px;
+    }
+
+
+</style>
+
+<body>
+   <h1>Input strings:</h1>
+    <form action="" method="post" class="form1">
+        {% csrf_token %}
+        <div class="form1__input">
+          <label for="str_01">String 1:</label>
+          <input type="text" name="str_01" id="str_01">
+        </div class="form__input">
+
+        <div class="form1__input">
+          <label for="str_02">String 2:</label>
+          <input type="text" name="str_02" id="str_02">
+        </div>
+
+      <div class="form1__input">
+          <label for="str_03">String 3:</label>
+          <input type="text" name="str_03" id="str_03">
+      </div>
+
+      <button class="form1__button">Search longest string</button>
+
+    </form>
+
+    <p class="result__message">
+      {{ search_result }}
+    </p>
+
+</body>
+</html>

@@ -4,13 +4,15 @@ from django.shortcuts import render
 
 
 def index(request):
-    print(request.GET)
-    return HttpResponse("Hello world")
+    response = (r"<p>"
+                r"<a href='/hw1901/'>Homework 19_01</a> <br> <br>"
+                r"<a href='/hw1902/'>Homework 19_02</a>"
+                r"</p>")
+    return HttpResponse(response)
 
 
 def home_page(request):
-    return render(
-        request,
-        'index.html',
-        context={"username": request.POST.get('username', 'World')},
-    )
+    name = request.POST.get("username", 'World')
+    return render(request,
+                  'index.html',
+                  context={"username": 'World' if name == '' else name})
