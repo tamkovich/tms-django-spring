@@ -5,11 +5,12 @@
     <title>Home Page</title>
 </head>
 <body>
-    <h1>Hello {{ username }}</h1>
-    <form action="" method="post">
-        {% csrf_token %}
-        <input type="text" name="username" id="">
-        <input type="submit" name="Отправить">
-    </form>
+<h1>index</h1>
+<a href="{% url 'hw1901' %}" class="button">Homework 19.01</a>
+<br>
+<a href="{% url 'hw1902' %}" class="button">Homework 19.02</a>
+<br>
+<a href="{% url 'additionaltask1' %}" class="button">Additional task</a>
+<br>
 </body>
 </html>

@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>HW 19.01</title>
+<style>
+   .blok-center {
+    position: absolute;
+    width: 600px;
+    height: 130px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: coral;
+    border: 1px solid #000;
+    padding: 10px;
+    overflow: auto;
+   }
+
+   .btn1{
+       font-size: 30px;
+   }
+
+   .btn2{
+       position: absolute;
+       margin: auto;
+       overflow: auto;
+       top: 0;
+       bottom: 0;
+       left: 0;
+       right: 0;
+   }
+
+   .label1{
+       font-family: Arial;
+       font-size: 30px;
+       padding-left: 60px;
+   }
+</style>
+</head>
+<body>
+<a href="{% url 'index' %}" class="btn2">На главную</a>
+<h1 align="center">Homework 19.01</h1>
+<div class="blok-center">
+    <form method="post", action="">
+        {% csrf_token %}
+        <label for="date">Date</label>
+        <input type="date" class="date" name="date" id="date" style="width:100%" /></p>
+        <button class="btn1">>>>Go!<<<</button>
+        <label class="label1">{{ date }}</label>
+    </form>
+</div>
+</body>
+</html>
