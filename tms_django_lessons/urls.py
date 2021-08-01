@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from articles.views import index, home_page
+from articles.views import index
+from MyHW.views import hw1901, hw1902, additionaltask1
 
 urlpatterns = [
-    path('', index),
-    path('home/', home_page),
+    path('', index, name='index'),
+    path('HW1901/', hw1901, name='hw1901'),
+    path('HW1902/', hw1902, name='hw1902'),
+    path('additionaltask/', additionaltask1, name='additionaltask1'),
     path('admin/', admin.site.urls),
 ]
