@@ -6,3 +6,4 @@ class Article(models.Model):
     content = models.TextField()
     author_name = models.CharField(max_length=50)
     rating = models.IntegerField()
+    topic = models.CharField(max_length=50, null=True)
