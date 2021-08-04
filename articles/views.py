@@ -3,7 +3,6 @@ from django.shortcuts import render
 
 from articles.models import Article
 from articles.forms import ArticleCreateForm
-from tms_django_lessons.forms import WriteLineForm
 
 
 def index(request):
@@ -12,26 +11,12 @@ def index(request):
 
 
 def home_page(request):
-    if request.method == 'GET':
-        form = WriteLineForm()
-        return render(
-            request,
-            'home.html',
-            context={"username": 'World', 'form': form},
-        )
-    elif request.method == 'POST':
-        form = WriteLineForm(request.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            print('Valid data:', data)
-        else:
-            print('Invalid data', form.errors)
-        return render(
-            request,
-            'home.html',
-            context={"username": form.data.username, 'form': form},
-        )
-
+    articles = Article.objects.all()
+    return render(
+        request,
+        'home.html',
+        context={"articles": articles},
+    )
 
 def get_article_page(request):
     return render(
