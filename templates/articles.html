@@ -1,0 +1,11 @@
+{% extends 'wrapper.html' %}
+
+{% block title %}Title Articles{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit", name="Отправить">
+    </form>
+{% endblock %}

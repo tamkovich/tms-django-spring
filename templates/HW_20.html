@@ -1,0 +1,18 @@
+{% extends 'wrapper.html' %}
+{% block title %}HW 20{% endblock %}
+{% block content %}
+    <h1>AviaSales.com</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ AviaSales }}
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+        <br><br>
+    </form>
+    <div>
+        <label>
+            Cost: {{ cost }}
+        </label>
+    </div>
+{% endblock %}

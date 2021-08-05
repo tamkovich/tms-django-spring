@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from tms_django_lessons.forms import AviaSales
+
 
 def hw1901(request):
     messages = {request.POST.get('message01', ''):len(request.POST.get('message01', '')),
@@ -20,3 +22,16 @@ def additionaltask1(request):
     return render(request,
                   'additional_task1.html',
                   context={"username": f'{req}'})
+
+def HW20(request):
+    if request.method == 'GET':
+        form = AviaSales()
+        return render(request, 'HW_20.html',
+                      context={'AviaSales': form})
+    elif request.method == 'POST':
+        form = AviaSales(request.POST)
+        if form.is_valid():
+            return render(request, 'HW_20.html',
+                          context={'form': form, 'cost': form.cleaned_data['amountPerson'] * 100})
+        else:
+            print('Invalid data:', form.errors)

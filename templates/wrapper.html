@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            font-family: "Bernard MT Condensed";
+            margin: auto;
+        }
+        form{
+            margin: auto;
+            text-align: center;
+            font-size: 30px;
+        }
+        label{
+            font-family: "Bernard MT Condensed";
+            font-size: 30px;
+        }
+        button{
+            font-family: "Bernard MT Condensed";
+            font-size: 35px;
+            width: 150px;
+            height: 50px;
+            margin-top: 20px;
+            border-radius: 10px;
+            background-color: bisque;
+        }
+        div{
+            text-align: center;
+        }
+        h1{
+            background: linear-gradient(white, bisque);
+            font-size: 70px;
+            text-align: center;
+        }
+        a{
+            font-size: 30px;
+        }
+    </style>
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+<h2>
+    {% block content %}{% endblock %}
+</h2>
+</body>
+</html>
