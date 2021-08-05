@@ -19,4 +19,4 @@ def additionaltask1(request):
         req = 'World'
     return render(request,
                   'additional_task1.html',
-                  context={"username": f'{req}'})
+                  context={"username": req})
