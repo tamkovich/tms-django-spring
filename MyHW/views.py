@@ -40,6 +40,6 @@ def HW20(request):
         form = AviaSales(request.POST)
         if form.is_valid():
             return render(request, 'HW_20.html',
-                          context={'form': form, 'cost': form.cleaned_data['amountPerson'] * 100})
+                          context={'AviaSales': form, 'cost': form.cleaned_data['amountPerson'] * 100})
         else:
             print('Invalid data:', form.errors)
