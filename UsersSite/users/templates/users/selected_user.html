@@ -1,0 +1,28 @@
+{% extends "users/base.html" %}
+
+{% block title %}{{selected_user.firstname}}{{selected_user.lastname}}{% endblock %}
+
+{% block content %}
+
+<br>
+А теперь о выбранном вами юзере:
+            <br>
+            имя:
+            <br>
+            {{selected_user.firstname}}
+			<br>
+            фамилия
+            <br>
+			{{selected_user.lastname}}
+            <br>
+            возраст
+			<br>
+			{{selected_user.age}}
+            <br>
+            призвание:
+			<br>
+			{{selected_user.profession}}
+			<br>
+
+
+{% endblock %}
