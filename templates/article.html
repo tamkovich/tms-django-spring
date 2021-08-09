@@ -1,16 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Article Page</title>
-</head>
-<body>
-    <div style="background-color: red;">header</div>
-    <h1>This page about news</h1>
+{% extends "base.html" %}
+
+{% block title %}Article Page{% endblock %}
+
+{% block content %}
+
+    <h1>
+        This page about articles
+    </h1>
     <form action="" method="post">
+        <table>
+            <tr>
+                <th> Id </th>
+                <th> Topic </th>
+                <th> Title </th>
+                <th> Content </th>
+                <th> Author name </th>
+                <th> Rating </th>
+            </tr>
         {% csrf_token %}
-        <input type="text" name="username" id="">
-        <input type="submit" name="Отправить">
+        {% for article in articles %}
+
+            <tr>
+                <td><a href="{% url 'article_edit'  article.id  %}">{{ article.id }}</a></td>
+                <td>{{ article.topic }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.content }}</td>
+                <td>{{ article.author_name }}</td>
+                <td>{{ article.rating }}</td>
+            </tr>
+
+        {% endfor %}
+        </table>
     </form>
-</body>
-</html>
+{% endblock %}

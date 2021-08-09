@@ -3,12 +3,30 @@
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
+
     <h1>
-        Hello {{ username }}
+        Home page :)
     </h1>
-    <form action="" method="post">
+    <form action="" method="get">
         {% csrf_token %}
-        {{ form }}
-        <input type="submit" name="Отправить">
+
+
+        <table>
+            <tr>
+                <th> Id </th>
+                <th> Title </th>
+                <th> Author name </th>
+            </tr>
+        {% csrf_token %}
+        {% for article in articles %}
+
+            <tr>
+                <td><a href="{% url 'article_edit'  article.id  %}">{{ article.id }}</a></td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.author_name }}</td>
+            </tr>
+
+        {% endfor %}
+        </table>
     </form>
 {% endblock %}

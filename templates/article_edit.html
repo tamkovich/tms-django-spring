@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %} Article edit {% endblock %}
+
+{% block content %}
+    <h2>Information about title</h2>
+
+    <form action="" method="get">
+        {% csrf_token %}
+
+        <table>
+            <tr>
+                <th> Id </th>
+                <th> Title </th>
+                <th> Topic </th>
+                <th> Content </th>
+                <th> Author name </th>
+                <th> Rating </th>
+            </tr>
+
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.topic }}</td>
+                <td>{{ article.content }}</td>
+                <td>{{ article.author_name }}</td>
+                <td>{{ article.rating }}</td>
+            </tr>
+
+        </table>
+
+
+    </form>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit"> Save </button>
+    </form>
+
+    <form method="POST" action="{% url 'delete_article' article.id %}">
+        {% csrf_token %}
+        <button type="submit"> Delete </button>
+    </form>
+{% endblock %}
