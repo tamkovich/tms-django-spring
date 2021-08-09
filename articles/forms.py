@@ -3,7 +3,6 @@ from django import forms
 from django.forms import ModelForm
 
 
-
 class ArticleCreateForm(forms.Form):
     title = forms.CharField(max_length=50)
     content = forms.CharField()
