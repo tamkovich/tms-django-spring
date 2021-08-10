@@ -1,30 +1,10 @@
-"""tms_django_lessons URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
 from django.urls import path
-
-from articles.views import index, articles
-from MyHW.views import hw1901, hw1902, HW20, additionaltask1
+from MyHW.views import DetailViewclass, UserHome, UpdateViewclass, DeleteViewclass, CreateViewclass
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('HW1901/', hw1901, name='hw1901'),
-    path('HW1902/', hw1902, name='hw1902'),
-    path('HW20/', HW20, name='hw20'),
-    path('articles/', articles),
-    path('additionaltask/', additionaltask1, name='additionaltask1'),
-    path('admin/', admin.site.urls),
+    path('', UserHome.as_view(), name='UserHome'),
+    path('create/', CreateViewclass.as_view(), name='CreateViewclass'),
+    path('detailinfo/<int:pk>', DetailViewclass.as_view(), name='DetailViewclass'),
+    path('updateuser/<int:pk>', UpdateViewclass.as_view(), name='UpdateViewclass'),
+    path('deleteuser/<int:pk>', DeleteViewclass.as_view(), name='DeleteViewclass'),
 ]

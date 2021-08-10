@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Home page{% endblock %}
+
+{% block content %}
+    <h1>
+        Users:
+    </h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for user in object_list %}
+            <p>
+                <a href="{% url 'DetailViewclass' user.id %}" class="button">{{ user.firstname }} {{ user.lastname }}</a>
+            </p>
+        {% endfor %}
+    <a href="{% url 'CreateViewclass' %}" class="btn-info"><br>Create user</a>
+    </form>
+{% endblock %}

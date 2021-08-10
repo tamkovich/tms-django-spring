@@ -1,13 +1,17 @@
-from django import forms
+from django.forms import ModelForm, TextInput, NumberInput
+import MyHW.models
 
-class WriteLineForm(forms.Form):
-    firstname = forms.CharField(max_length=20)
-    lastname = forms.CharField(max_length=20)
-    age = forms.IntegerField(min_value=0)
 
-class AviaSales(forms.Form):
-    name = forms.CharField(max_length=20, required=False)
-    whereFrom = forms.CharField(max_length=20, required=False)
-    whereTo = forms.CharField(max_length=20, required=False)
-    amountPerson = forms.IntegerField(min_value=1)
-    date = forms.DateField(required=False)
+class CRUDuser(ModelForm):
+    class Meta:
+        model = MyHW.models.User
+        fields = ['firstname', 'lastname', 'age', 'profession']
+        widgets = {'firstname': TextInput(attrs={
+            'placeholder': 'Firstname'}),
+            'lastname': TextInput(attrs={
+                'placeholder': 'Lastname'}),
+            'age': NumberInput(attrs={
+                'placeholder': 'Age'}),
+            'profession': TextInput(attrs={
+                'placeholder': 'Profession'}),
+        }

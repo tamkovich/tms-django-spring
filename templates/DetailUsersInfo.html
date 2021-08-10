@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Detail info about {{ user.firstname }}{% endblock %}
+
+{% block content %}
+    <p>
+        {{ user.id }}
+        {{ user.firstname }}
+        {{ user.lastname }}
+        {{ user.age }}
+        {{ user.profession }}
+        <a href="{% url 'UpdateViewclass' user.id %}" class="btn-info">Update info</a>
+        <a href="{% url 'DeleteViewclass' user.id %}" class="btn-danger">Delete user</a>
+    </p>
+{% endblock %}

@@ -1,45 +1,27 @@
-from django.shortcuts import render
-from tms_django_lessons.forms import AviaSales
-from datetime import datetime
+from MyHW.models import User
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView
 
 
-def hw1901(request):
-    messages = {request.POST.get('message01', ''):len(request.POST.get('message01', '')),
-                request.POST.get('message02', ''):len(request.POST.get('message02', '')),
-                request.POST.get('message03', ''):len(request.POST.get('message03', ''))}
-    keymax = max(messages, key=messages.get)
-    return render(request, 'HW_1901.html', context={'result':keymax})
+class UserHome(ListView):
+    model = User
+    template_name = 'home.html'
 
-def hw1902(request):
-    if request.method == 'GET':
-        date = request.POST.get('date', '')
-        return render(request, 'HW_1902.html', context={'date': date})
-    elif request.method == 'POST':
-        date, format = request.POST.get('date', ''), '%Y-%m-%d'
-        date = datetime.strptime(date, format)
-        if date.month == 1 and date.day == 1:
-            date = f'С новым {date.year} годом!'
-            return render(request, 'HW_1902.html', context={'date': date})
-        else:
-            return render(request, 'HW_1902.html', context={'date':date.strftime('%Y-%m-%d')})
+class DetailViewclass(DetailView):
+    model = User
+    template_name = 'DetailUsersInfo.html'
+    context_object_name = 'user'
 
-def additionaltask1(request):
-    req = request.POST.get('username', 'World')
-    if req == '':
-        req = 'World'
-    return render(request,
-                  'additional_task1.html',
-                  context={"username": f'{req}'})
+class CreateViewclass(CreateView):
+    model = User
+    template_name = 'createuser.html'
+    fields = ['firstname', 'lastname', 'age', 'profession']
 
-def HW20(request):
-    if request.method == 'GET':
-        form = AviaSales()
-        return render(request, 'HW_20.html',
-                      context={'AviaSales': form})
-    elif request.method == 'POST':
-        form = AviaSales(request.POST)
-        if form.is_valid():
-            return render(request, 'HW_20.html',
-                          context={'form': form, 'cost': form.cleaned_data['amountPerson'] * 100})
-        else:
-            print('Invalid data:', form.errors)
+class UpdateViewclass(UpdateView):
+    model = User
+    template_name = 'updateuser.html'
+    fields = ['firstname', 'lastname', 'age', 'profession']
+
+class DeleteViewclass(DeleteView):
+    model = User
+    template_name = 'deleteuser.html'
+    success_url = '/'
