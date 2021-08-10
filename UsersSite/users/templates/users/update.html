@@ -1,0 +1,25 @@
+{% extends "users/base.html" %}
+
+{% block title %}Обновить юзера{% endblock %}
+
+{% block content %}
+
+	Обнови юзера
+	<br>
+	<form method="post">
+		{% csrf_token %}
+		Имя:<br>
+		{{ form.firstname }}<br>
+		Фамилия:<br>
+		{{ form.lastname }}<br>
+		Возраст:<br>
+		{{ form.age }}<br>
+		Призвание:<br>
+		{{ form.profession }}<br>
+		Если норм. юзер обновится<br>
+		<button type="submit">Обновить юзера</button>
+		<span>{{ error }}</span>
+	</form>
+
+
+{% endblock %}

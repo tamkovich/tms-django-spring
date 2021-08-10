@@ -1,0 +1,25 @@
+{% extends "users/base.html" %}
+
+{% block title %}Новый юзер{% endblock %}
+
+{% block content %}
+
+	Создай нового юзера
+	<br>
+	<form method="post">
+		{% csrf_token %}
+		Имя:<br>
+		{{ form.firstname }}<br>
+		Фамилия:<br>
+		{{ form.lastname }}<br>
+		Возраст:<br>
+		{{ form.age }}<br>
+		Призвание:<br>
+		{{ form.profession }}<br>
+		Если норм. новый юзер появится на сайте<br>
+		<button type="submit">Добавить юзера</button>
+		<span>{{ error }}</span>
+	</form>
+
+
+{% endblock %}
