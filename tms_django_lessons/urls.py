@@ -18,6 +18,7 @@ from django.urls import path
 
 from articles.views import index, home_page
 from homeworks.views import hw_19_01, hw_19_02, hw_20
+from homework_21.views import fill_db, show_users, add_user
 
 urlpatterns = [
     path('', index),
@@ -25,5 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hw1901/', hw_19_01),
     path('hw1902/', hw_19_02),
-    path('order/', hw_20)
+    path('order/', hw_20),
+    path('db/', fill_db),
+    path('users/', show_users, name='users'),
+    path('adduser/', add_user, name='adduser'),
 ]
