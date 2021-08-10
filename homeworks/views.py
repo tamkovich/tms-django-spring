@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from homeworks.forms import TicketOrderForm
 
 
 def hw_19_01(request):
@@ -29,3 +30,24 @@ def hw_19_02(request):
     return render(request,
                   'hw1902.html',
                   context={"result_message": result_message})
+
+
+def hw_20(request):
+    if request.method == 'GET':
+        order_form = TicketOrderForm()
+        return render(request, "order.html", context={'form': order_form})
+    elif request.method == 'POST':
+        order_form = TicketOrderForm(request.POST)
+        if order_form.is_valid():
+            pass_amount = int(request.POST.get('passengers_cnt'))
+            message = f"Total price: {100 if pass_amount == 1 else 100 * 2 * pass_amount}$"
+            return render(request,
+                          'order.html',
+                          context={'form': order_form,
+                                   'message': message})
+        else:
+            message = "Wrong input. Please, check."
+            return render(request,
+                          'order.html',
+                          context={'form': order_form,
+                                   'message': message})

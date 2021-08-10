@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Ticket order
+{% endblock %}
+
+{% block header %}
+  <h2>Order form:</h2>
+{% endblock %}
+
+{% block content %}
+
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      {{ field.label }} <br>
+      {{ field }} <br>
+    {% endfor %}
+    <br>
+    <input type="submit" value="Order">
+  </form>
+
+  <p> {{ message }}</p>
+
+{% endblock %}

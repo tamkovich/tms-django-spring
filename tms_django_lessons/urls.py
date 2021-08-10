@@ -16,9 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-import homeworks.views
 from articles.views import index, home_page
-from homeworks.views import hw_19_01, hw_19_02
+from homeworks.views import hw_19_01, hw_19_02, hw_20
 
 urlpatterns = [
     path('', index),
@@ -26,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hw1901/', hw_19_01),
     path('hw1902/', hw_19_02),
+    path('order/', hw_20)
 ]
