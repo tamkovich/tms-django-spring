@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from tms_django_lessons.forms import AviaSales
 import datetime
 
 
@@ -46,3 +47,17 @@ def fun_HW19_02(request):
             return render(request,
                           'HW19_02.html',
                           context={"longest": data})
+
+
+def avia_page(request):
+    if request.method == 'GET':
+        form = AviaSales()
+        return render(request, 'HW20.html',
+                      context={"username": "world", "form": form})
+    if request.method == 'POST':
+        form = AviaSales(request.POST)
+        if form.is_valid():
+            return render(request, 'HW20.html',
+                          context={'form': form, 'cost': form.cleaned_data['amountPerson'] * 100})
+        else:
+            print("Invalid data", form.errors)

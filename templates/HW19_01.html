@@ -1,56 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>hw1901</title>
-</head>
-<style>
-    .text{
-        display: inline-block;
-        text-align: center;
-        margin-bottom: 20px;
-        justify-content: center;
-    }
-    .send{
-        display: flex;
-        justify-content: left;
-    }
+{% extends "base.html" %}
 
-    h2{
-        width: 900px;
-        text-align: center;
-        border: 1px solid black;
-        background: lightgray;
-    }
-    p{
-        width: 900px;
-        text-align: center;
-        border: 1px solid black;
-        background: lightgray;
-        margin-bottom: 20px;
-    }
-</style>
-<body>
-<p>
-    Дана форма с тремя текстовыми полями. Вернуть пользователю максимальное по длине значение поля.
-    Пример: введены abc, abcdef, ab - пользователю вернется abcdef.
-    Для задания требуется создать новый репозиторий.
-</p>
-<form action="" method="post">
-    {% csrf_token %}
-    <div class="text">
-        <input type="text" name="text1" id="">
-        <input type="text" name="text2" id="">
-        <input type="text" name="text3" id="">
+{% block title %}HW19_01 Page{% endblock %}
 
-    </div>
-    <div class="send">
-        <input type="submit" name="Отправить">
-    </div>
-
-</form>
-<h2>
-    Самая длинная строка  = {{ longest }}
-</h2>
-</body>
-</html>
+{% block content %}
+    <p>
+        Дана форма с тремя текстовыми полями. Вернуть пользователю максимальное по длине значение поля.
+        Пример: введены abc, abcdef, ab - пользователю вернется abcdef.
+        Для задания требуется создать новый репозиторий.
+    </p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="text">
+            <input type="text" name="text1" id="">
+            <input type="text" name="text2" id="">
+            <input type="text" name="text3" id="">
+        </div>
+        <h2>
+            Самая длинная строка  = {{ longest }}
+        </h2>
+    </form>
+{% endblock %}

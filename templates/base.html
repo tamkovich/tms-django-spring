@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+ <style>
+     .text
+     {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 20px;
+    justify-content: center;
+    }
+    .send{
+    display: flex;
+    justify-content: left;
+    }
+    h2{
+    width: 900px;
+    text-align: center;
+    border: 1px solid black;
+    background: lightgray;
+    }
+    p{
+    width: 900px;
+    text-align: center;
+    border: 1px solid black;
+    background: lightgray;
+    margin-bottom: 20px;
+    }
+ </style>
+<body>
+<div style="background-color: palegoldenrod">
+    <div><a href="{% url 'HW1901-page' %}">HW19_01 Page</a></div>
+    <div><a href="{% url 'HW1902-page' %}">HW19_02 Page</a></div>
+    <div><a href="{% url 'HW20-page' %}">HW20 Page</a></div>
+</div>
+{% block content %}{% endblock %}
+</body>
