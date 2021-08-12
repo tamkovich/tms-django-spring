@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import CustomUser
-from .forms import UserCreateForm
+from .forms import UserCreateForm, UserUpdateForm
+
 
 def get_request_id(request):
     var = str(request)
@@ -38,15 +39,17 @@ def update_user(request):
     error = ""
     user_id_from_request = get_request_id(request)
     if request.method == 'POST':
-        form = UserCreateForm(request.POST)
+        form = UserUpdateForm(request.POST)
         if form.is_valid():
             customer = CustomUser.objects.get(id=user_id_from_request)
             customer.firstname = form.cleaned_data['firstname']
             customer.lastname = form.cleaned_data['lastname']
-            customer.age = form.cleaned_data['age']
+            customer.age = int(form.cleaned_data['age'])
             customer.profession = form.cleaned_data['profession']
+            customer.save()
+            return redirect('/users/')
         else:
             error = "Смотри что пишешь!!!"
-    form = UserCreateForm()
+    form = UserUpdateForm()
     return render(request, 'users/update.html', {'form': form})
 
