@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}HW19_02 Page{% endblock %}
+
+{% block content %}
+<p>
+    Дана форма с одним полем - дата. Если дата первое января - вывести сообщение:
+    “С новым {номер года} годом”. В ином случае, вывести дату в формате: год-месяц-день.
+    Выполнить задание в репозитории из первого задания.
+</p>
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="text">
+        <input type="date" name="calendar" id="">
+    </div>
+    <div class="send">
+        <input type="submit" name="Отправить">
+    </div>
+
+</form>
+<h1>
+     {{ longest }}
+</h1>
+{% endblock %}
