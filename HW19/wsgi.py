@@ -1,5 +1,5 @@
 """
-WSGI config for tms_django_lessons project.
+WSGI config for HW19 project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tms_django_lessons.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'HW19.settings')
 
 application = get_wsgi_application()

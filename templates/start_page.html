@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %} Start Page HW 19-20 {% endblock %}
+
+{% block body %}
+    <h1>Ссылки на страницы с домашними заданиями:</h1>
+    <div><a href="{% url 'nameHW19-1' %}">HW 19-1</a></div>
+    <div><a href="{% url 'nameHW19-2' %}">HW 19-2</a></div>
+    <div><a href="{% url 'nameHW20' %}">HW 20</a></div>
+{% endblock %}

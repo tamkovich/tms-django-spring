@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}HW 20{% endblock %}
+
+{% block body %}
+    <h1> Page HW 20: Форма заказа авиабилетов </h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <p><input type="submit" value="Расчет стоимости" name="button_HW20"></p>
+    </form>
+    <p>Итоговая стоимость: {{ cost }} </p>
+    <div><a href="{% url 'name-start-page' %}">Вернуться на стартовую страницу</a></div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}HW 19_2{% endblock %}
+
+{% block body %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <h1> Page HW 19_2 </h1>
+        <input type="date" name="my_date">
+        <input type="submit" value="Проверка даты" name="button_HW19_2">
+    </form>
+    <p>{{ date_inf }}</p>
+    <div><a href="{% url 'name-start-page' %}">Вернуться на стартовую страницу</a></div>
+{% endblock %}
