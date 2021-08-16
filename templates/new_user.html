@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}New user{% endblock %}
+
+{% block body %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <h1> Форма создания нового пользователя: </h1>
+        {{ form }}
+        <input type="submit" value="Создать пользователя" name="new_user">
+    </form><br>
+    <div><a href="{% url 'name-start-page' %}">Вернуться на главную страницу</a></div>
+{% endblock %}

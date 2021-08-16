@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} Start Page HW 21 {% endblock %}
+
+{% block body %}
+    <h1>Главная страница HW21.</h1>
+    <h3>Краткая информация о пользователях <br>
+        (сделайте выбор для просмотра деталей, изменения и удаления):</h3>
+    {% for u in users %}
+        <a href="{% url 'name_user_page' %}?id={{ u.id }}"> {{ u.id }} {{ u.firstname }} {{ u.lastname }}</a> <br>
+    {% endfor %}
+
+    <br>
+    <div><a href="{% url 'name_new_users' %}">Создать нового пользователя</a></div>
+{% endblock %}
