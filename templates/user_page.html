@@ -7,11 +7,7 @@
     <form action="" method="post">
         {% csrf_token %}
         <h3> Выбранный пользователь: </h3>
-        id: <input type="number" value={{ id }} name="id" size="7" readonly><br>
-        firstname: <input type="text" value={{ firstname }} name="fn" size="30"><br>
-        lastname: <input type="text" value={{ lastname }} name="ln" size="30"><br>
-        age: <input type="number" value={{ age }} name="ag" size="7"><br>
-        profession: <input type="text" value={{ profession }} name="prof" size="30"><br>
+        {{ form2 }}<br>
         <p> Измените данные, при необходимости, и сохраните. </p>
         <input type="submit" value="Сохранить данные" name="update_user">
         <input type="submit" value="Удалить пользователя" name="delete_user">

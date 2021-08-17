@@ -34,30 +34,22 @@ def user_page(request):
     """Ф-ция выводит данные пользователя, позволяет удалить и изменить их."""
     user_id = request.GET.get("id")
     user = Users.objects.get(id=user_id)
-    firstname = user.firstname
-    lastname = user.lastname
-    age = user.age
-    profession = user.profession
+    form2 = UserCreateForm(user.__dict__)
     mess = ""
     if request.POST.get('delete_user'):
         user.delete()
         mess = "Запись удалена, вернитесь на главную страницу!"
-# хотел redirect на главную страницу, но во 2-ом return
-# есть context параметры, без них тут все ломается.
+# хотел redirect на главную страницу, но в return нужно вернуть форму, поэтому через mess.
     if request.POST.get('update_user'):
-        user.firstname = str(request.POST.get('fn'))
-        user.lastname = str(request.POST.get('ln'))
-        user.age = str(request.POST.get('ag'))
-        user.profession = str(request.POST.get('prof'))
-        user.save()
-# user.update(.....) почему-то не работало, не находило метод update, хотя с delete() было ОК.
-        mess = "Запись обновлена, вернитесь на главную страницу!"
-    return render(
-        request,
-        'user_page.html',
-        context={'id': user_id, 'firstname': firstname, 'lastname': lastname,
-                 'age': age, 'profession': profession, 'mess': mess})
-# ? не могу понять, почему в html при отображении profession теряется второе слово?
-# ? возможно есть способ решения с заполнением значениями из DB именно формы,
-#    но я такой ненагуглил (может ты что подскажешь), поэтому пока так.
-# + буду благодарен за оценку оптимальности моего решения этой задачи.
+        form3 = UserCreateForm(request.POST)
+        if form3.is_valid():
+            user.firstname = form3.cleaned_data['firstname']
+            user.lastname = form3.cleaned_data['lastname']
+            user.age = form3.cleaned_data['age']
+            user.profession = form3.cleaned_data['profession']
+            user.save()
+            mess = "Запись обновлена, вернитесь на главную страницу!"
+        else:
+            mess = "Запись НЕ обновлена, данные не валидны!"
+    return render(request, 'user_page.html', context={'form2': form2, 'mess': mess})
+# буду благодарен за предложения по оптимизации моего решения (сам я им доволен :) ).
