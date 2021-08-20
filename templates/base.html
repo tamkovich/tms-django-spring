@@ -3,13 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        {% block title %}{% endblock %}
+        {% block title %} {% endblock %}
     </title>
 </head>
 <body>
-    <div style="background-color: red;">
-        <div>header</div>
-        <div><a href="{% url 'home-page' %}">Home Page</a></div>
+
+<style type="text/css">
+         header {
+          font-family: Lucida Sans Unicode, Lucida Grande, Sans-Serif;
+        }
+        ul {
+            display:inline-block;
+        }
+        a {
+        text-decoration: none;
+        }
+        ul a:hover {
+           text-decoration: underline;
+           color: #000066;
+        }
+
+        table {
+          font-family: Lucida Sans Unicode, Lucida Grande, Sans-Serif;
+          font-size: 14px;
+          background: white;
+          max-width: 70%;
+          width: 70%;
+          border-collapse: collapse;
+          text-align: left;
+        }
+        th {
+          font-weight: normal;
+          color: #039;
+          border-bottom: 2px solid #6678b1;
+          padding: 10px 8px;
+        }
+        td {
+          color: #669;
+          padding: 9px 8px;
+          transition: .3s linear;
+        }
+        tr:hover td {
+          color: #6699ff;
+          background: #ffffcc;
+        }
+</style>
+
+    <div style="background-color: rgba(255, 255, 128, .5);">
+<header>
+        <ul><div><a href="{% url 'home-page' %}">Home Page</a></div>
+        </ul>
+        <ul><div><a href="{% url 'article-page' %}">Article page</a></div>
+        </ul>
+        <ul><div><a href="{% url 'add-article' %}">Add article</a></div>
+        </ul>
+</header>
+
+
     </div>
     {% block content %}{% endblock %}
 </body>

@@ -1,0 +1,13 @@
+"""Получение всех альбомов группы"""
+MusicBand.objects.get(name='Eminem').album.all()
+
+"""Получение всех треков альбома"""
+Album.objects.get(name='Recovery').tracks.all()
+
+"""Получение всех треков группы"""
+albums_qs = MusicBand.objects.get(name='Eminem').album.all()
+tracks_qs = albums_qs.values('name')
+tracks =Track.objects.filter(tracks__name__in=tracks_qs)
+
+'''Получение всех альбомов, группы которых были основаны в 1990 году'''
+Album.objects.filter(year='1990')
