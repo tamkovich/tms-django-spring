@@ -1,22 +1,12 @@
-"""tms_django_lessons URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from articles.views import index, home_page, get_article_page, add_article
+
+api_urlpatterns = [
+    path('snippets/', include('snippets.urls')),
+    path('users/', include('users.urls'))
+]
 
 urlpatterns = [
     path('', index),
@@ -24,4 +14,9 @@ urlpatterns = [
     path('article/', get_article_page),
     path('home/', home_page, name='home-page'),
     path('admin/', admin.site.urls),
+    path('api/', include(api_urlpatterns)),
+]
+
+urlpatterns += [
+    path('api-auth/', include('rest_framework.urls')),
 ]
