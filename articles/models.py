@@ -18,12 +18,6 @@ class Category(models.Model):
 class Author(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    editions = models.ManyToManyField('Edition')
-
-
-class Edition(models.Model):
-    name = models.CharField(max_length=50)
-    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class ContactInfo(models.Model):

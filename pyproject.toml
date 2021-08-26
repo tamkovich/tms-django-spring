@@ -1,0 +1,4 @@
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tms_django_lessons.settings"
+testpaths = "tests"
+python_files = "tests.py test_*.py"
