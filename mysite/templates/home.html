@@ -1,0 +1,34 @@
+<h1>Input letters</h1>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.letters1 }}
+  {{ form.letters2 }}
+  {{ form.letters3 }}
+  <button type="submit">Input letters</button>
+</form>
+
+    <table border="4" bordercolor="#000000">
+      <tr>
+        <td><b>input1</b></td>
+        <td><b>input2</b></td>
+        <td><b>input3</b></td>
+        <td><b>max len str</b></td>
+        </tr>
+{% for every_input in info %}
+  <tr>
+    <td>{{ every_input.letters1 }}</td>
+    <td>{{ every_input.letters2 }}</td>
+    <td>{{ every_input.letters3 }}</td>
+    {% if every_input.letters1|length < every_input.letters2|length and every_input.letters2|length > every_input.letters3|length %}
+      <td>{{ every_input.letters2 }}</td>
+    {% elif every_input.letters2|length < every_input.letters1|length and every_input.letters1|length > every_input.letters3|length %}
+      <td>{{ every_input.letters1 }}</td>
+    {% elif every_input.letters1|length < every_input.letters3|length and every_input.letters3|length > every_input.letters2|length %}
+      <td>{{ every_input.letters3 }}</td>
+    {% else %}
+      <td>???</td>
+    {% endif %}
+  </tr>
+
+{% endfor %}
+    </table>
