@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<br>
+    <form method="post">
+		{% csrf_token %}
+		Введите имя и фамилию:<br>
+		{{ form_order.customer_name }}<br>
+        Пункт отправления:<br>
+        {{ form_order.departure }}<br>
+        Пункт назначения:<br>
+        {{ form_order.destination }}<br>
+		Количество:<br>
+		{{ form_order.quantity }}<br>
+        На какую дату (гггг-м-д):<br>
+        {{ form_order.date }}<br>
+		<button type="submit">Заказать билеты</button>
+		<span>{{ error }}</span><br>
+        К оплате:
+{% if quantity_from_form == 0 %}
+    0
+{% else %}
+    {{ total_price }}
+{% endif %}
+	</form>
+
+<br>
+</body>
+</html>
